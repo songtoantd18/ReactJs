@@ -15,8 +15,8 @@ function App() {
   //   color : 'white'
   // }
   return (
-    <div className='layout'>
-      <TodoItem/>
+    <div className='layout'>day la nhanh example-demo
+      
      
     </div>
 

@@ -1,35 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import './TaskItem'
-import TaskItem from './TaskItem';
-import ItemTask1 from './ItemTask';
-import './todoItem'
-import TodoItem from './todoItem';
-
-
+import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main"
+import Taskbar from "./components/Taskbar"
 
 
 function App() {
-  // const normal = {
-  //   backgroundColor :'#00ff00',
-  //   color : 'white'
-  // }
   return (
-    <div className='layout'>
-      <TodoItem/>
-     
+    <div className="total">
+      <div className="container">khong co gi 
+        <Header></Header>
+        <div className="taskbar_main">
+          <Taskbar></Taskbar>
+          <Main></Main>
+
+
+        </div>
+      </div>
     </div>
-
-  //   <div>
-  //   <p>title:task1</p>
-  //   <p>creator : loc</p>
-  //   <p>status :new</p>
-  //   <hr/>
-  //   <p>description this is a task</p>
-    
-  // </div>
-
-    
   );
 }
 

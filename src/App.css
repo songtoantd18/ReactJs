@@ -55,70 +55,54 @@ p {
   font-size: 14px;
   line-height: 18px;
 }
-.layout {
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+
+  background-color: whitesmoke;
+  width: 75vw;
+  height: 90vh;
+  border: 1px solid black;
+  border-radius: 5px;
+ 
+}
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #675bf1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title {
+  margin-left: 1vh;
+  color: white;
+  border: solid 1px  white;
+  border-radius:  0 5px 5px 0;
+}
+.header-button {
+  margin-right: 1vh;
+  color: white;
+  border: solid 1px white;
+  background-color: #675bf1;
+  border-radius: 0 5px 5px 0;
+
+}
+.header-input {
+  color: #282c34;
+  border: 1px solid white;
+  border-radius: 5px 0 0 5px;
+  width: 40vw;
+
+}
+.taskbar_main {
+  /* display: flex;
+  background-color: red; */
   /* background-color: red; */
-  width: 1024px;
-  margin: 15px auto;
-}
-.containerItem {
-  width: calc(25% - 75px / 4);
-  height: 150px;
-  border-radius: 10px;
-  border: 2px solid var(--primary);
-  padding: 15px;
-}
-.containerItem_title,
-.containerItem_status,
-.containerItem_description > p:first-child {
-  font-weight: bold;
-}
-.containerItem_status--new {
-  color: var(--new);
-}
-.containerItem_lineBreak {
-  height: 2px;
-  background-color: var(--primary);
-}
-.containerItem_description > p :last-child {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.normal {
-  text-transform: uppercase;
-  margin: 0px;
-  background-color: #00ff00;
-  color: white;
-  border-radius: 25px;
-font-size: 1em;
-
-}
-.containerItem2,
-.containerItem3  {
-  background-color: rgb(249, 248, 248);
-  width: calc(25% - 75px / 4);
-  height: 150px;
-  border-radius: 10px;
-  border: 5px solid gray;
-  padding: 15px;
-}
-.containerItem2-title ,
-.containerItem3-title 
-
-{
-  font-weight: bold;
-}
-.containerItem2-creator,
-.containerItem2-status
- {
-  color:  silver;
-  font-weight: bold;
-}
-.urgent {
-  background-color: red;
-  color: white;
-  border-radius: 25px;
-text-transform: uppercase;
-font-size: 1em;
+  width: 100%;
+  height: calc(100% - 70px);
+  /* height: 90vh; */
 }

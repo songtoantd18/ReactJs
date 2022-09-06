@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import './TaskItem'
+import TaskItem from './TaskItem';
+import ItemTask1 from './ItemTask';
+import './todoItem'
+import TodoItem from './todoItem';
+
+
+
 
 function App() {
+  // const normal = {
+  //   backgroundColor :'#00ff00',
+  //   color : 'white'
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='layout'>
+      <TodoItem/>
+     
     </div>
+
+  //   <div>
+  //   <p>title:task1</p>
+  //   <p>creator : loc</p>
+  //   <p>status :new</p>
+  //   <hr/>
+  //   <p>description this is a task</p>
+    
+  // </div>
+
+    
   );
 }
 

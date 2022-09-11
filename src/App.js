@@ -1,35 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import './TaskItem'
-import TaskItem from './TaskItem';
-import ItemTask1 from './ItemTask';
-import './todoItem'
-import TodoItem from './todoItem';
 
+import "./App.css";
 
-
+import Circle from "./Circle";
+// import CircleSmall from "./circleSmall";
 
 function App() {
-  // const normal = {
-  //   backgroundColor :'#00ff00',
-  //   color : 'white'
-  // }
   return (
-    <div className='layout'>day la nhanh example-demo
-      
-     
+    <div>
+      <Circle id={'id 1'} title= {'title1'} backgroundColor={'pink'}></Circle>
+      <Circle id={'id2'} title= {'title 2'} backgroundColor={'silver'}></Circle>
+
     </div>
-
-  //   <div>
-  //   <p>title:task1</p>
-  //   <p>creator : loc</p>
-  //   <p>status :new</p>
-  //   <hr/>
-  //   <p>description this is a task</p>
-    
-  // </div>
-
-    
   );
 }
 

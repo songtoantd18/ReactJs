@@ -1,21 +1,45 @@
-import logo from './logo.svg';
+
 import './App.css';
-import './TaskItem'
-import TaskItem from './TaskItem';
-import ItemTask1 from './ItemTask';
-import './todoItem'
-import TodoItem from './todoItem';
+import Medal from './Medal';
 
 
 
 
 function App() {
-  // const normal = {
-  //   backgroundColor :'#00ff00',
-  //   color : 'white'
-  // }
+
   return (
-    <div className='layout'>day la nhanh example-demo
+    <div className='layout'>
+      <Medal
+      boder= {'yellow'}
+      title = {'nhom1'}
+      groupAvartar={'dua xe'}
+      numberMember= {'dasdasdsa'}
+      project={'app thoi tiet'}
+      text={'dasdasdasdas'}
+      logoTask={'dasdasdasdas'}
+      colorIndex={'blue'}></Medal>
+        <Medal
+      boder= {'yellow'}
+      title = {'nhom1'}
+      groupAvartar={'dua xe'}
+      numberMember= {'dasdasdsa'}
+      project={'app thoi tiet'}
+      text={'dasdasdasdas'}
+      logoTask={'dasdasdasdas'}
+      colorIndex={'red'}>
+
+      </Medal>
+      <Medal
+      boder= {'yellow'}
+      title = {'nhom1'}
+      groupAvartar={'dua xe'}
+      numberMember= {'dasdasdsa'}
+      project={'app thoi tiet'}
+      text={'dasdasdasdas'}
+      logoTask={'dasdasdasdas'}
+      colorIndex={'#00ff00'}>
+        
+      </Medal>
       
      
     </div>

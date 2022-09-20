@@ -1,4 +1,5 @@
 * { 
+  text-transform: capitalize;
 
   box-sizing: border-box; 
 
@@ -223,7 +224,6 @@ p {
   color: white;
 }
  .containerBody { 
-  background-color: red;
 
    display: flex; 
 
@@ -308,4 +308,29 @@ p {
 
   padding-bottom: 8px; 
 
+}  
+
+.containerItem__status--new { 
+
+  color: var(--new); 
+
 } 
+
+ 
+
+/* <--- new class */ 
+
+.containerItem__status--doing { 
+
+  color: var(--doing); 
+
+} 
+
+ 
+
+.containerItem__status--done { 
+
+  color: var(--primary); 
+
+} 
+

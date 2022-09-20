@@ -1,12 +1,17 @@
-const TodoItem =()=> {
-    return(
-        <div className="containerItem">
-            <p className="containerItem_title">title:task1</p>
-            <p className="containerItem_title">Creator :loc</p>
-            <p className="containerItem_title">status:new</p>
-            <hr className="containerItem_title"/>
-            <p className="containerItem_title">description:this is task</p>
 
+const TodoItem =({ title,creator,status,description})=> {
+    return (
+        <div className="containerItem">
+            <p className="containerItem__title"> title: {title}</p>
+            <p className="containerItem__creator"> creator: {creator}</p>
+            <p className={`containerItem__status containerItem__status--${status.toLowerCase()}`} > status: {status}</p>
+            <hr className="containerItem__lineBreak"/>
+            <div style={{ textTransform: 'uppercase'}} className="containerItem__description">
+                <p> description</p>
+                <p> {description}</p>
+
+
+            </div>
         </div>
     )
 }

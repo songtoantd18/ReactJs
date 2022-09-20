@@ -1,14 +1,16 @@
 const Header =()=> {
-    return(
+    return (
         <div className="containerHeader">
-            <div className="containerHeader_left">
+            <div className="containerHeader__left">
                 <button> create new task</button>
             </div>
-            <div className="containerHeader_right">
+            <div className="containerHeader__right">
                 <input placeholder="Type something to search" />
                 <button>search</button>
             </div>
         </div>
+
+        
         
 
 

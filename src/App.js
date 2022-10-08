@@ -1,21 +1,21 @@
 import "./App.css";
-import Header from "./components/Header";
-import Main from "./components/Main"
-import Taskbar from "./components/Taskbar"
 
+import Form from "./components/useState/Form";
+import BodyData2 from "./components/props/props-c2/BodyData2";
+import F81 from "./components/props/props-c2/F81.jsx";
+import FormRender from "./components/useState/FormRender";
+import { useState } from "react";
 
 function App() {
+  const [valueApp, setValueApp] = useState("gia tri p");
+  const handleValueInput = (value1) => {
+    console.log("appjs value:", value1);
+    setValueApp(value1);
+  };
   return (
-    <div className="total">
-      <div className="container">khong co gi 
-        <Header></Header>
-        <div className="taskbar_main">
-          <Taskbar></Taskbar>
-          <Main></Main>
-
-
-        </div>
-      </div>
+    <div>
+      <h1>{valueApp}</h1>
+      <FormRender handleValueInput={handleValueInput} />
     </div>
   );
 }

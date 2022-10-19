@@ -1,22 +1,17 @@
 import "./App.css";
-import Header from "./component/Header";
-import Sidebar from "./component/Sidebar";
-import Body from "./component/Body";
-import Footer from './component/Footer';
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div>
-        <Header></Header>
-        <Sidebar></Sidebar>
-        <Body></Body>
-        <Footer></Footer>
-
-
+      <Header></Header>
+      <Sidebar></Sidebar>
+      <Body></Body>
+      <Footer></Footer>
     </div>
-  
-
-    
   );
 }
 

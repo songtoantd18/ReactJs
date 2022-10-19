@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const TodoFormFullFunction = () => {
   //   const [id, setId] = useState(0);
-
+  const [searchValue, setSearchValue] = useState("");
   const [valueArray, setValueArray] = useState([]);
   const [details, setDetails] = useState({
     // id: Math.floor(Math.random() * 1000000),
@@ -29,17 +29,45 @@ const TodoFormFullFunction = () => {
     setValueArray((prev) => {
       const newValue = [...prev, newDetails];
 
-      console.log("newValue:", newValue);
+      // console.log("newValue:", newValue);
       return newValue;
     });
   };
   const deleteHandler = (index) => {
     console.log("index:", index);
-    valueArray.splice(index, 1);
-    setValueArray([...valueArray]);
+
+    // valueArray.splice(index, 1); k duoc xoa
+    // setValueArray([...valueArray]);
+  };
+  const handleSearch = () => {
+    console.log("1:", 1);
+    console.log("searchValue:", searchValue);
+    const arrayList = valueArray.map((item) => {
+      return item.name;
+    });
+    // console.log("arrayList:", arrayList);
+    const result = arrayList.filter((item) => {
+      return item.includes(searchValue);
+    });
+    console.log("result:", result);
+  };
+
+  const searchHandler = (e) => {
+    setSearchValue(e.target.value);
+    handleSearch();
   };
   return (
     <div>
+      <h3 style={{ textDecoration: "underline" }}>search</h3>
+      <input
+        type="text"
+        name="name"
+        placeholder=" type your name"
+        onChange={searchHandler}
+      />
+      <button onClick={handleSearch}>search</button>
+      <hr />
+
       <form onSubmit={handleSubmit}>
         <h3>name</h3>
         <input

@@ -1,16 +1,14 @@
-const Button =({
-    buttonClass,title,style,onClick,type
-
-})=>{
-    return (
-        <div
-        className={`buttonClass ${buttonClass}`}
-        style={style}
-        onClick={onClick}
-        type={type}
-        >
-            {title}
-        </div>
-    );
+const Button = ({ buttonClass, title, style, onClick, type }) => {
+  return (
+    <button
+      className={`buttonClass ${buttonClass}`}
+      style={style}
+      onClick={onClick}
+      type={type}
+    >
+      {title}
+    </button>
+  );
 };
+
 export default Button;

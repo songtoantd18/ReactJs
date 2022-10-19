@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-import TodoItem from "./TodoItem";
+import TodoItem from "../components/TodoItem";
 
-import { STATUS, todoList } from "../constants";
+import AddNewForm from "../shared/form";
 
-const Body = () => {
+import { MODE, STATUS, todoList } from "../constants";
+
+const Body = ({ mode, handleChangeRenderMode }) => {
   const [todoItems, setTodoItems] = useState(todoList);
 
   const renderTodoItem = () => {
@@ -19,7 +21,40 @@ const Body = () => {
     ));
   };
 
-  return <div className="containerBody">{renderTodoItem()}</div>;
+  const chooseMode = () => {
+    switch (mode) {
+      case MODE.SHOW_LIST:
+        return renderTodoItem();
+
+      case MODE.ADD_NEW:
+        return (
+          <AddNewForm
+            handleSubmit={(e) => {
+              e.preventDefault();
+
+              const data = {
+                title: e.target[0].value,
+
+                creator: e.target[1].value,
+
+                description: e.target[2].value,
+
+                status: STATUS.NEW,
+              };
+
+              setTodoItems([data, ...todoItems]);
+
+              handleChangeRenderMode(MODE.SHOW_LIST);
+            }}
+          />
+        );
+
+      default:
+        return renderTodoItem();
+    }
+  };
+
+  return <div className="containerBody">{chooseMode()}</div>;
 };
 
 export default Body;

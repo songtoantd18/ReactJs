@@ -5,9 +5,24 @@ import TodoItem from "../components/TodoItem";
 import AddNewForm from "../shared/form";
 
 import { MODE, STATUS } from "../constants";
+
+////////////////
+
+//////////////////////
 const { get, set } = localStorageUlti("todoItems", []);
 const POSITION_KEYWORD = 9;
 const Body = ({ mode, handleChangeRenderMode }) => {
+  const [indexCurrentTask, setIndexCurrentTask] = useState(null);
+
+  const [currentTask, setCurrentTask] = useState({
+    title: "",
+
+    creator: "",
+
+    description: "",
+
+    status: STATUS.NEW,
+  });
   const [filterText, setFilterText] = useState("");
   const [todoItems, setTodoItems] = useState([]);
   useEffect(() => {

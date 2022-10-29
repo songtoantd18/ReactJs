@@ -17,6 +17,7 @@ const RadioCheckboxButton = ({
       style={{
         ...style,
         cursor: disabled ? "not-allowed" : "pointer",
+        color: "red",
       }}
     >
       <input

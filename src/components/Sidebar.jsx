@@ -1,21 +1,28 @@
+import { Link } from "react-router-dom";
+
+import { SIDEBAR_ITEMS } from "../constants";
+
 const Sidebar = () => {
-    return(
-        <div className="containerSidebar">
-            <div className="containerSidebar_item">
-                <p>All task</p>
-            </div>
-            <div className="containerSidebar_item">
-                <p>New Task</p>
-            </div>
-            <div className="containerSidebar_item">
-                <p>doing Task</p>
-            </div>
-            <div className="containerSidebar_item">
-                <p>done task</p>
-            </div>
+  const renderSidebarItem = () => {
+    return SIDEBAR_ITEMS.map((item) => (
+      <div key={item.title} className="containerSidebar__item">
+        <p>
+          <Link
+            to={item.url}
+            style={{
+              fontSize: "24px",
 
+              color: "white",
+            }}
+          >
+            {item.title}
+          </Link>
+        </p>
+      </div>
+    ));
+  };
 
-        </div>
-    )
-}
+  return <div className="containerSidebar">{renderSidebarItem()}</div>;
+};
+
 export default Sidebar;

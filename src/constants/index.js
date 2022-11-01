@@ -1,65 +1,53 @@
 export const STATUS = {
   NEW: "New",
-  DOING: "Doing",
-  DONE: "done",
-};
-const descriptionData =
-  "This is a task, This is a task, This is a task, This is a task, This is a task.";
-export const todoList = [
-  {
-    title: "task 1",
-    creator: "loc",
-    status: STATUS.NEW,
-    description: descriptionData,
-  },
-  {
-    title: "task 2",
-    creator: "loc",
-    status: STATUS.DOING,
-    description: descriptionData,
-  },
-  {
-    title: "task 3",
-    creator: "loc",
-    status: STATUS.DOING,
-    description: descriptionData,
-  },
-  {
-    title: "task 4",
-    creator: "loc",
-    status: STATUS.NEW,
-    description: descriptionData,
-  },
-  {
-    title: "task 5",
-    creator: "loc",
-    status: STATUS.NEW,
-    description: descriptionData,
-  },
-  {
-    title: "task 6",
-    creator: "loc",
-    status: STATUS.DOING,
-    description: descriptionData,
-  },
-  {
-    title: "task 7",
-    creator: "loc",
-    status: STATUS.NEW,
-    description: descriptionData,
-  },
-  {
-    title: "task 8",
-    creator: "loc",
-    status: STATUS.DOING,
 
-    description: descriptionData,
+  DOING: "Doing",
+
+  DONE: "Done",
+};
+
+export const ROUTE = {
+  All: "/",
+
+  NEW: "/new",
+
+  DOING: "/doing",
+
+  DONE: "/done",
+
+  ADD_NEW: "/add-new",
+
+  DETAIL: "/detail",
+
+  DETAIL_TASK: "/detail/:idTask",
+
+  NOT_FOUND: "*",
+};
+
+export const SIDEBAR_ITEMS = [
+  {
+    url: "/",
+
+    title: "All Task",
+  },
+
+  {
+    url: "/new",
+
+    title: "New Task",
+  },
+
+  {
+    url: "/doing",
+
+    title: "Doing Task",
+  },
+
+  {
+    url: "/done",
+
+    title: "Done Task",
   },
 ];
-export const MODE = {
-  SHOW_LIST: "showList",
 
-  ADD_NEW: "addNew",
-
-  DETAIL_TASK: "detailTask",
-};
+export const LIST_TO_DO_KEY = "l_t_d_k";

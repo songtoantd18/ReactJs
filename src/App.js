@@ -1,27 +1,68 @@
 import "./App.css";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
-import { MODE } from "./constants";
-import { useState } from "react";
+
+import { Routes, Route, Link } from "react-router-dom";
+
+import Home from "./screens/Home";
+
+import All from "./screens/All";
+
+import New from "./screens/New";
+
+import Doing from "./screens/Doing";
+
+import Done from "./screens/Done";
+
+import EditAddNew from "./screens/EditAddNew";
+
+import { ROUTE } from "./constants";
 
 function App() {
-  const [renderMode, setRenderMode] = useState(MODE.SHOW_LIST);
-
-  const handleChangeRenderMode = (mode = MODE.ADD_NEW) => {
-    setRenderMode(mode);
-  };
   return (
     <div className="layout">
-      <Header
-        handleCreateNewTask={() => handleChangeRenderMode(MODE.ADD_NEW)}
-      />
-      <Sidebar />
+      <Routes>
+        <Route
+          path={ROUTE.NOT_FOUND}
+          element={
+            <Link
+              to={ROUTE.All}
+              style={{
+                display: "block",
 
-      <Body mode={renderMode} handleChangeRenderMode={handleChangeRenderMode} />
+                margin: "30% auto",
 
-      {renderMode === MODE.SHOW_LIST && <Footer />}
+                fontWeight: "bold",
+
+                fontSize: 60,
+
+                width: 475,
+              }}
+            >
+              404 NOT FOUND
+            </Link>
+          }
+        />
+
+        <Route path={ROUTE.All} element={<Home />}>
+          <Route path={ROUTE.ADD_NEW} element={<EditAddNew />} />
+
+          <Route path={ROUTE.NEW} element={<New />} />
+
+          <Route path={ROUTE.DOING} element={<Doing />} />
+
+          <Route path={ROUTE.DONE} element={<Done />} />
+
+          <Route path={ROUTE.DETAIL} element={<EditAddNew isEditTask />}>
+            <Route
+              path={ROUTE.DETAIL_TASK}
+              element={<EditAddNew isEditTask />}
+            />
+
+            <Route index element={<div>không có</div>} />
+          </Route>
+
+          <Route index element={<All />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

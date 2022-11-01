@@ -1,10 +1,18 @@
 import { useState } from "react";
 
+import { Link, useSearchParams } from "react-router-dom";
+
+import { ROUTE } from "../constants";
+
 const Header = ({ handleCreateNewTask }) => {
   const [keyword, setKeyword] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleSearchClick = () => {
-    window.location.search = `?keyword=${keyword.trim()}`;
+    searchParams.set("keyword", keyword.trim().toLowerCase());
+
+    setSearchParams(searchParams);
 
     setKeyword("");
   };
@@ -12,7 +20,11 @@ const Header = ({ handleCreateNewTask }) => {
   return (
     <div className="containerHeader">
       <div className="containerHeader__left">
-        <button onClick={handleCreateNewTask}>Create New Task</button>
+        <button onClick={handleCreateNewTask}>
+          <Link to={ROUTE.ADD_NEW} style={{ color: "white" }}>
+            Create New Task
+          </Link>
+        </button>
       </div>
 
       <div className="containerHeader__right">

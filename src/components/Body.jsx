@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { localStorageUlti } from "../functions/localStorage";
 import TodoItem from "../components/TodoItem";
+import DetailTaskForm from "../shared/DetailTaskForm";
 
 import AddNewForm from "../shared/form";
 
@@ -25,6 +26,13 @@ const Body = ({ mode, handleChangeRenderMode }) => {
   });
   const [filterText, setFilterText] = useState("");
   const [todoItems, setTodoItems] = useState([]);
+  const handleShowDetailTask = (item, index) => {
+    setCurrentTask(item);
+
+    setIndexCurrentTask(index);
+
+    handleChangeRenderMode(MODE.DETAIL_TASK);
+  };
   useEffect(() => {
     setTodoItems(get());
   }, []);
@@ -45,8 +53,27 @@ const Body = ({ mode, handleChangeRenderMode }) => {
           creator={item.creator}
           status={item.status}
           description={item.description}
+          handleClick={() => handleShowDetailTask(item, index)}
         />
       ));
+  };
+
+  const handleChangeTask = (e, item) => {
+    e.preventDefault();
+
+    const todoItemsLocalStorage = get();
+
+    if (item) {
+      todoItemsLocalStorage.splice(indexCurrentTask, 1, item);
+    } else {
+      todoItemsLocalStorage.splice(indexCurrentTask, 1);
+    }
+
+    setTodoItems([...todoItemsLocalStorage]);
+
+    set([...todoItemsLocalStorage]);
+
+    handleChangeRenderMode(MODE.SHOW_LIST);
   };
   ////////////////////////
   const handleSubmit = (e) => {
@@ -77,11 +104,13 @@ const Body = ({ mode, handleChangeRenderMode }) => {
         return renderTodoItem();
 
       case MODE.ADD_NEW:
+        return <AddNewForm handleSubmit={handleSubmit} />;
+
+      case MODE.DETAIL_TASK:
         return (
-          <AddNewForm
-            handleSubmit={(e) => {
-              handleSubmit(e);
-            }}
+          <DetailTaskForm
+            currentTask={currentTask}
+            handleChangeTask={handleChangeTask}
           />
         );
 

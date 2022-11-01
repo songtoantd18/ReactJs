@@ -28,7 +28,7 @@ const radioList = [
   },
 ];
 
-const DetailTaskForm = ({ formClass, currentTask, updateTask, deleteTask }) => {
+const DetailTaskForm = ({ formClass, currentTask, handleChangeTask }) => {
   const [form, setForm] = useState({
     title: "",
 
@@ -161,7 +161,7 @@ const DetailTaskForm = ({ formClass, currentTask, updateTask, deleteTask }) => {
 
   return (
     <form
-      onSubmit={(e) => updateTask(e, form)}
+      onSubmit={(e) => handleChangeTask(e, form)}
       className={`formClassContainer ${formClass}`}
     >
       {renderForm()}
@@ -187,7 +187,7 @@ const DetailTaskForm = ({ formClass, currentTask, updateTask, deleteTask }) => {
 
         <Button title={"Reset"} onClick={setDefaultValue} />
 
-        <Button title={"Delete"} onClick={deleteTask} />
+        <Button title={"Delete"} onClick={handleChangeTask} />
       </div>
     </form>
   );

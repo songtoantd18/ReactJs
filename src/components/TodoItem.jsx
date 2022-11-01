@@ -1,23 +1,29 @@
-const TodoItem = ({ title, creator, status, description }) => {
+const TodoItem = ({ title, creator, status, description, handleClick }) => {
   return (
-    <div className="containerItem">
-      <p className="containerItem__title"> title: {title}</p>
-      <p className="containerItem__creator"> creator: {creator}</p>
+    <div
+      className="containerItem"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
+      <p className="containerItem__title">Title: {title}</p>
+
+      <p className="containerItem__creator">Creator: {creator}</p>
+
       <p
         className={`containerItem__status containerItem__status--${status.toLowerCase()}`}
       >
-        {" "}
-        status: {status}
+        Status: {status}
       </p>
+
       <hr className="containerItem__lineBreak" />
-      <div
-        style={{ textTransform: "uppercase" }}
-        className="containerItem__description"
-      >
-        <p> description</p>
-        <p> {description}</p>
+
+      <div className="containerItem__description">
+        <p>Description:</p>
+
+        <p>{description}</p>
       </div>
     </div>
   );
 };
+
 export default TodoItem;

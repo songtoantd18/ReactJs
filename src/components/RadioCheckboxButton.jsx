@@ -1,14 +1,20 @@
-import React from "react";
-
 const RadioCheckboxButton = ({
   radioCheckboxClass,
+
   title,
+
   type,
+
   style,
-  onClick,
+
+  handleOnChange,
+
   name,
+
   disabled,
+
   isChecked,
+
   value,
 }) => {
   return (
@@ -16,6 +22,7 @@ const RadioCheckboxButton = ({
       className={`radioCheckboxClass ${radioCheckboxClass}`}
       style={{
         ...style,
+
         cursor: disabled ? "not-allowed" : "pointer",
       }}
     >
@@ -25,9 +32,11 @@ const RadioCheckboxButton = ({
         name={name}
         disabled={disabled}
         value={value}
-        onClick={onClick}
+        onChange={handleOnChange}
       />
+
       <span />
+
       <label htmlFor={name}>{title}</label>
     </div>
   );

@@ -10,12 +10,16 @@ import App from "./App";
 
 import reportWebVitals from "./reportWebVitals";
 
+import { AlertProvider } from "./context/AlertContext";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AlertProvider>
+        <App />
+      </AlertProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

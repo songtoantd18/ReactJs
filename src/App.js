@@ -1,4 +1,5 @@
 import "./App.css";
+import Alert from "./components/Alert";
 
 import { Routes, Route, Link } from "react-router-dom";
 
@@ -63,6 +64,7 @@ function App() {
           <Route index element={<All />} />
         </Route>
       </Routes>
+      <Alert />
     </div>
   );
 }

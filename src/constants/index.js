@@ -49,6 +49,27 @@ export const SIDEBAR_ITEMS = [
     title: "Done Task",
   },
 ];
+export const ALERT = {
+  NONE: 0,
+
+  SUCCESS: 1,
+
+  ERROR: 2,
+
+  MINIMUM_TIME_MS: 1000,
+
+  MAXIMUM_TIME_MS: 10000,
+
+  DEFAULT_TIME: 3,
+};
+
+export const FEATURES = {
+  ADD_NEW: "addNew",
+
+  EDIT_TASK: "editTask",
+
+  DELETE_TASK: "deleteTask",
+};
 
 export const ITEM_PER_PAGE = 2;
 

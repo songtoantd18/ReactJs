@@ -6,9 +6,11 @@ import ListTodoItem from "../components/ListTodoItem";
 
 import Footer from "../components/Footer";
 
-import { LIST_TO_DO_KEY, STATUS } from "../constants";
+import { LIST_TO_DO_KEY, STATUS, ITEM_PER_PAGE } from "../constants";
 
 import { localStorageUlti } from "../functions/localStorage";
+
+import usePagination from "../hooks/usePagination";
 
 const { get } = localStorageUlti(LIST_TO_DO_KEY, []);
 
@@ -16,6 +18,12 @@ const Done = () => {
   const [todoItems, setTodoItems] = useState([]);
 
   const [searchParams] = useSearchParams();
+
+  const { jumpPage, currentData, currentPage, maxPage } = usePagination(
+    todoItems,
+
+    ITEM_PER_PAGE
+  );
 
   useEffect(() => {
     const listTodo = get().filter(
@@ -29,9 +37,15 @@ const Done = () => {
 
   return (
     <>
-      <ListTodoItem todoItems={todoItems} />
+      <ListTodoItem todoItems={currentData} />
 
-      <Footer />
+      {maxPage > 1 && (
+        <Footer
+          currentPage={currentPage}
+          jumpPage={jumpPage}
+          maxPage={maxPage}
+        />
+      )}
     </>
   );
 };

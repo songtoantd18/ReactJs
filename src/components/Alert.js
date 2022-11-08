@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 
 import AlertContext from "../context/AlertContext";
 
@@ -6,6 +6,16 @@ import { ALERT } from "../constants";
 
 const Alert = () => {
   const alert = useContext(AlertContext);
+
+  const { action, label } = alert.callBack;
+
+  const callBackRef = useRef(null);
+
+  useEffect(() => {
+    if (callBackRef.current) {
+      callBackRef.current.focus();
+    }
+  });
 
   const chooseStyleAlert = () => {
     switch (alert.alert) {
@@ -27,6 +37,12 @@ const Alert = () => {
       <button className="alert__clear" onClick={alert.clear}>
         DISMISS
       </button>
+
+      {label && (
+        <button className="alert__clear" onClick={action} ref={callBackRef}>
+          {label}
+        </button>
+      )}
     </div>
   );
 };

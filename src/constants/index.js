@@ -71,7 +71,7 @@ export const FEATURES = {
   DELETE_TASK: "deleteTask",
 };
 
-export const ITEM_PER_PAGE = 2;
+export const ITEM_PER_PAGE = 4;
 
 // Temporary, it will be 4 so that pagination can be
 

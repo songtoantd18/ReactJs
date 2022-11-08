@@ -58,44 +58,54 @@ const Body = ({ mode, handleChangeRenderMode }) => {
       ));
   };
 
-  const handleChangeTask = (e, item) => {
-    e.preventDefault();
-
-    const todoItemsLocalStorage = get();
-
-    if (item) {
-      todoItemsLocalStorage.splice(indexCurrentTask, 1, item);
-    } else {
-      todoItemsLocalStorage.splice(indexCurrentTask, 1);
-    }
-
-    setTodoItems([...todoItemsLocalStorage]);
-
-    set([...todoItemsLocalStorage]);
-
-    handleChangeRenderMode(MODE.SHOW_LIST);
-  };
-  ////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = {
-      title: e.target[0].value,
-
-      creator: e.target[1].value,
-
-      description: e.target[2].value,
+      ...form,
 
       status: STATUS.NEW,
     };
 
+    set([data, ...get()]);
+
+    alert.success(
+      getMessageAddNew("Task is created successfully!"),
+
+      ALERT.DEFAULT_TIME
+    );
+
+    navigate(ROUTE.All);
+  };
+
+  const handleChangeTask = (e, isDelete) => {
+    e.preventDefault();
+
     const todoItemsLocalStorage = get();
 
-    setTodoItems([data, ...todoItemsLocalStorage]);
+    if (!isDelete) {
+      todoItemsLocalStorage.splice(idTask, 1, form);
 
-    set([data, ...todoItemsLocalStorage]);
+      alert.success(
+        getMessageEditTask(
+          `Task have id: ${idTask} which is updated successfully!`
+        ),
 
-    handleChangeRenderMode(MODE.SHOW_LIST);
+        ALERT.DEFAULT_TIME
+      );
+    } else {
+      todoItemsLocalStorage.splice(idTask, 1);
+
+      alert.success(
+        getMessageDeleteTask(`Task have id: ${idTask} which is deleted!`),
+
+        ALERT.DEFAULT_TIME
+      );
+    }
+
+    set([...todoItemsLocalStorage]);
+
+    navigate(ROUTE.All);
   };
   //////////////////////////////////////
   const chooseMode = () => {

@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AlertContext from "../context/AlertContext";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { LIST_TO_DO_KEY, STATUS, ROUTE } from "../constants";
+import { LIST_TO_DO_KEY, STATUS, ROUTE, FEATURES, ALERT } from "../constants";
 
 import { localStorageUlti } from "../functions/localStorage";
 
@@ -13,7 +14,16 @@ import Button from "../components/Button";
 import RadioCheckboxButton from "../components/RadioCheckboxButton";
 
 import { setValidateRule } from "../functions/validation";
+import { initMessage } from "../functions/shared";
 
+/////////////
+
+// import { useState, useEffect, useContext } from "react";
+///////////
+const getMessageAddNew = initMessage(FEATURES.ADD_NEW);
+const getMessageEditTask = initMessage(FEATURES.EDIT_TASK);
+
+const getMessageDeleteTask = initMessage(FEATURES.DELETE_TASK);
 const radioList = [
   {
     title: STATUS.NEW,
@@ -54,6 +64,7 @@ const EditAddNew = ({ isEditTask }) => {
 
     description: true,
   });
+  const alert = useContext(AlertContext);
 
   useEffect(() => {
     if (isEditTask) setDefaultValue();
@@ -118,8 +129,36 @@ const EditAddNew = ({ isEditTask }) => {
 
     if (!isDelete) {
       todoItemsLocalStorage.splice(idTask, 1, form);
+
+      alert.success(
+        getMessageEditTask(
+          `Task have id: ${idTask} which is updated successfully!`
+        ),
+
+        ALERT.DEFAULT_TIME
+      );
     } else {
-      todoItemsLocalStorage.splice(idTask, 1);
+      const deletedItem = todoItemsLocalStorage.splice(idTask, 1);
+
+      alert.success(
+        getMessageDeleteTask(`Task have id: ${idTask} which is deleted!`),
+
+        ALERT.DEFAULT_TIME,
+
+        {
+          label: "UNDO",
+
+          action: () => {
+            const todoItemsLocalStorage = get();
+
+            todoItemsLocalStorage.splice(idTask, 0, deletedItem[0]);
+
+            set(todoItemsLocalStorage);
+
+            window.location.reload();
+          },
+        }
+      );
     }
 
     set([...todoItemsLocalStorage]);

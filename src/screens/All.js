@@ -5,12 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import ListTodoItem from "../components/ListTodoItem";
 
 import Footer from "../components/Footer";
+import { ITEM_PER_PAGE } from "../constants";
 
-import { LIST_TO_DO_KEY, ITEM_PER_PAGE } from "../constants";
-
-import { localStorageUlti } from "../functions/localStorage";
 import usePagination from "../hooks/usePagination";
-const { get } = localStorageUlti(LIST_TO_DO_KEY, []);
+
+import clientServer from "../server/clientServer";
 
 const All = () => {
   const [todoItems, setTodoItems] = useState([]);
@@ -24,11 +23,20 @@ const All = () => {
   );
 
   useEffect(() => {
-    const listTodoItem = get().filter((item) =>
-      item.title.toLowerCase().includes(searchParams.get("keyword") || "")
-    );
+    clientServer
+      .get("todoItems")
 
-    setTodoItems(listTodoItem);
+      .then((res) => {
+        const listTodoItem = res.data.filter((item) =>
+          item.title.toLowerCase().includes(searchParams.get("keyword") || "")
+        );
+
+        setTodoItems(listTodoItem);
+      })
+
+      .catch((err) => {
+        console.error("error:", err);
+      });
   }, [searchParams]);
 
   return (
